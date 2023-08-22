@@ -62,3 +62,16 @@ body {
     color: #000;
 }
 
+.result__img img {
+    height: 20vh;
+    margin-right: 25px;
+}
+
+.result__img {
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+
