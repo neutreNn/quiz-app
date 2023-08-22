@@ -136,14 +136,58 @@ function changeQuestion () {
             score++;
         }
 
+        showResult();
+    }
+
+};
+
+function showResult () {
+    if (score < 4) {
         questions.innerHTML = `
-            <h1>Score: ${score}</h1>
+        <div class="result" id="result">
+            <div class="result__img">
+                <img src="./images/bad.png">
+                <div class="result__img-text">
+                    <p style="color:red">Not good</p>
+                    <p>Score: ${score}</p>
+                </div>
+            </div>
+        </div>
         `;
     }
 
+    if (score >= 5 && score < 8) {
+        questions.innerHTML = `
+        <div class="result" id="result">
+            <div class="result__img">
+                <img src="./images/good.png">
+                <div class="result__img-text">
+                    <p style="color:orange">Good</p>
+                    <p>Score: ${score}</p>
+                </div>
+            </div>
+        </div>
+        `;
+    }
+
+    if (score >= 8) {
+        questions.innerHTML = `
+        <div class="result" id="result">
+            <div class="result__img">
+                <img src="./images/perfect.png">
+                <div class="result__img-text">
+                    <p style="color:green">Perfect</p>
+                    <p>Score: ${score}</p>
+                </div>
+            </div>
+        </div>
+        `;
+    }
 };
 
 next_btn.addEventListener('click', () => {
     changeQuestion();
 });
+
+
 
