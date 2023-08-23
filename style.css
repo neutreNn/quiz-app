@@ -65,6 +65,7 @@ body {
 .result__img img {
     height: 20vh;
     margin-right: 25px;
+    border-radius: 5px;
 }
 
 .result__img {
