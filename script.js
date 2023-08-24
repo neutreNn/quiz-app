@@ -1,3 +1,4 @@
+// Data array for questions
 const quizData = [
     {
         title: "What does HTML stand for?",
@@ -71,8 +72,9 @@ const quizData = [
     },
 ];
 
-
+// Question number
 let currentQuiz = 0;
+// Quiz score
 let score = 0;
 
 
@@ -85,7 +87,7 @@ const next_btn = document.getElementById('next_btn');
 
 loadQuizData();
 
-
+// Loads data from an array
 function loadQuizData () {
     const currentQuizData = quizData[currentQuiz];
 
@@ -116,6 +118,7 @@ function loadQuizData () {
     `;
 };
 
+// Changes the question when pressing the button
 function changeQuestion () {
 
     if (currentQuiz < quizData.length - 1) {
@@ -141,6 +144,8 @@ function changeQuestion () {
 
 };
 
+// When passing the last question displays the 
+// final screen with the score
 function showResult () {
     if (score < 4) {
         questions.innerHTML = `
@@ -185,6 +190,7 @@ function showResult () {
     }
 };
 
+// Listener on the button to change the question
 next_btn.addEventListener('click', () => {
     changeQuestion();
 });
