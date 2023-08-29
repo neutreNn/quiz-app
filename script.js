@@ -76,13 +76,17 @@ const quizData = [
 let currentQuiz = 0;
 // Quiz score
 let score = 0;
-
+// Width progress
+let width = 0;
 
 const questions__info = document.getElementById('questions__info');
 const questions__choice = document.getElementById('questions__choice');
 const questions = document.getElementById('questions');
 const answers = document.querySelectorAll('.answer');
 const next_btn = document.getElementById('next_btn');
+
+let elem = document.getElementById('progress__line');
+let text = document.querySelector('.progress__text');
 
 
 loadQuizData();
@@ -93,7 +97,7 @@ function loadQuizData () {
 
     questions__info.innerHTML = `
     <div class="questions__info-number" id="questions__info-number">
-        <h1>Question №${currentQuiz + 1} of ${quizData.length}</h1>
+        <h1>Question №${currentQuiz + 1}</h1>
     </div>
     <div class="questions__info-title" id="questions__info-title">
         <p>${currentQuizData.title}</p>
@@ -190,10 +194,15 @@ function showResult () {
     }
 };
 
+// Changes the progress line when passing a question
+function progress () {
+    width += 10;
+    elem.style.width = width + '%';
+    text.innerHTML = width + '%';
+}
+
 // Listener on the button to change the question
 next_btn.addEventListener('click', () => {
     changeQuestion();
+    progress ();
 });
-
-
-
