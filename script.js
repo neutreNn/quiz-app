@@ -79,16 +79,30 @@ let score = 0;
 // Width progress
 let width = 0;
 
+// In this area we upload our question number and its text
 const questions__info = document.getElementById('questions__info');
+
+// We upload answer options to this area
 const questions__choice = document.getElementById('questions__choice');
+
+// The area that includes both the question number and its text, 
+// as well as answer options. We then upload our score and the 
+// result of the responses here
 const questions = document.getElementById('questions');
+
+// We collect all inputs so that we can then select from them with the checked attribute
 const answers = document.querySelectorAll('.answer');
+
+// Viewing the button
 const next_btn = document.getElementById('next_btn');
 
+// Viewing the progress line
 let elem = document.getElementById('progress__line');
+
+// Looking at the percentages under the progress line
 let text = document.querySelector('.progress__text');
 
-
+// We load the first question so that it is displayed on the screen
 loadQuizData();
 
 // Loads data from an array
@@ -125,6 +139,8 @@ function loadQuizData () {
 // Changes the question when pressing the button
 function changeQuestion () {
 
+    let stats = document.getElementById('stats');
+
     if (currentQuiz < quizData.length - 1) {
         let checked = document.querySelector('input[name="answer"]:checked');
 
@@ -144,6 +160,7 @@ function changeQuestion () {
         }
 
         showResult();
+        stats.style.display = 'none';
     }
 
 };
