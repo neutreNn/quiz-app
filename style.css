@@ -106,7 +106,7 @@ body {
     }
 
     .questions {
-        margin-right: none;
+        margin-right: 0;
         margin-bottom: 20px;
         width: 50vw;
     }
