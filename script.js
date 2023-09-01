@@ -76,8 +76,6 @@ const quizData = [
 let currentQuiz = 0;
 // Quiz score
 let score = 0;
-// Width progress
-let width = 0;
 
 // In this area we upload our question number and its text
 const questions__info = document.getElementById('questions__info');
@@ -96,11 +94,6 @@ const answers = document.querySelectorAll('.answer');
 // Viewing the button
 const next_btn = document.getElementById('next_btn');
 
-// Viewing the progress line
-let elem = document.getElementById('progress__line');
-
-// Looking at the percentages under the progress line
-let text = document.querySelector('.progress__text');
 
 // We load the first question so that it is displayed on the screen
 loadQuizData();
@@ -139,8 +132,6 @@ function loadQuizData () {
 // Changes the question when pressing the button
 function changeQuestion () {
 
-    let stats = document.getElementById('stats');
-
     if (currentQuiz < quizData.length - 1) {
         let checked = document.querySelector('input[name="answer"]:checked');
 
@@ -160,7 +151,7 @@ function changeQuestion () {
         }
 
         showResult();
-        stats.style.display = 'none';
+        clearInterval(interval);
     }
 
 };
@@ -211,12 +202,49 @@ function showResult () {
     }
 };
 
+// Width progress
+let width = 0;
+
+// Viewing the progress line
+let elem = document.getElementById('progress__line');
+
+// Looking at the percentages under the progress line
+let text = document.querySelector('.progress__text');
+
 // Changes the progress line when passing a question
 function progress () {
     width += 10;
     elem.style.width = width + '%';
     text.innerHTML = width + '%';
 }
+
+let timer = document.getElementById('timer');
+
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let interval;
+
+function updateTime () {
+
+    seconds++;
+
+    if (seconds == 60) {
+        minutes++;
+        seconds = 0;
+    }
+    if (minutes == 60) {
+        hours++;
+        minutes = 0;
+    }
+
+    timer.textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    interval = setInterval(updateTime, 1000);
+});
 
 // Listener on the button to change the question
 next_btn.addEventListener('click', () => {
