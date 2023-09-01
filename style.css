@@ -100,7 +100,13 @@ body {
     font-weight: 600;
 }
 
+.stats__timer {
+    margin-top: 5vh;
+    text-align: center;
+}
+
 @media (max-width: 1100px) {
+
     .container {
         display: block;
     }
@@ -114,6 +120,11 @@ body {
     .stats {
         width: 50vw;
     }
+
+    .stats__timer {
+        margin-top: 20px;
+    }
+
 }
 
 @media (max-width: 750px) {
@@ -125,4 +136,18 @@ body {
     .stats {
         width: 70vw;
     }
+
+}
+
+@media (max-width: 490px) {
+
+    .result__img {
+        display: block;
+        text-align: center;
+    }
+
+    .result__img img {
+        margin-right: 0;
+    }
+
 }
