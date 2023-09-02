@@ -218,13 +218,16 @@ function progress () {
     text.innerHTML = width + '%';
 }
 
+// Looks at the timer in the form of an h1 tag , which will then change
 let timer = document.getElementById('timer');
 
+// Variables that we will need for the timer
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
 let interval;
 
+// A feature that will update our time
 function updateTime () {
 
     seconds++;
@@ -242,6 +245,7 @@ function updateTime () {
 
 };
 
+// The listener that will start the timer when the page loads
 document.addEventListener('DOMContentLoaded', () => {
     interval = setInterval(updateTime, 1000);
 });
